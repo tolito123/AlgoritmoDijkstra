@@ -35,7 +35,7 @@ public class AlgoritmoDijkstraSolisCedeño {
             ciudades[i] = scanner.nextLine();
         }
 
-        int[][] graph = new int[numCiudad][numCiudad];
+        int[][] grafo = new int[numCiudad][numCiudad];
         System.out.println("Ingrese la matriz de adyacencia (use 0 si no hay conexión):");
         for (int i = 0; i < numCiudad; i++) {
             for (int j = 0; j < numCiudad; j++) {
@@ -47,7 +47,7 @@ public class AlgoritmoDijkstraSolisCedeño {
                         System.out.println("La distancia debe ser un número positivo. Intente de nuevo.");
                     }
                 } while (distancia < 0);
-                graph[i][j] = distancia;
+                grafo[i][j] = distancia;
             }
         }
 
@@ -56,13 +56,13 @@ public class AlgoritmoDijkstraSolisCedeño {
         System.out.print("Ingrese la ciudad de destino: ");
         String ciudadDestino = scanner.next();
 
-        int start = Arrays.asList(ciudades).indexOf(ciudadOrigen);
-        int end = Arrays.asList(ciudades).indexOf(ciudadDestino);
+        int origen = Arrays.asList(ciudades).indexOf(ciudadOrigen);
+        int destino = Arrays.asList(ciudades).indexOf(ciudadDestino);
 
-        if (start == -1 || end == -1) {
+        if (origen == -1 || destino == -1) {
             System.out.println("Ciudad no válida ingresada.");
         } else {
-            dijkstra(graph, start, end, ciudades);
+            dijkstra(grafo, origen, destino, ciudades);
         }
 
         scanner.close();
